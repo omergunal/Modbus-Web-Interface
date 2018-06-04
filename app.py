@@ -9,13 +9,12 @@ from pymodbus.client.sync import ModbusTcpClient
 DEBUG = True
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 class ReusableForm(Form):
     ip = TextField('IP:')
     port = TextField('Port:')
-    adres = TextField('Baslangic Adresi:')
-    deger = TextField('IP:')
+    adres = TextField('Start address:')
+    value = TextField('IP:')
     unitId = TextField('unitId:')
 
 @app.route("/")
