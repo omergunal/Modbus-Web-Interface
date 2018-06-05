@@ -1,6 +1,7 @@
 #!flask/bin/python
 # -*- coding: utf-8 -*-
 
+import os
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from pymodbus.client.sync import ModbusTcpClient
@@ -9,12 +10,13 @@ from pymodbus.client.sync import ModbusTcpClient
 DEBUG = True
 app = Flask(__name__)
 app.config.from_object(__name__)
+app.config['SECRET_KEY'] = os.urandom(24)
 
 class ReusableForm(Form):
     ip = TextField('IP:')
     port = TextField('Port:')
-    adres = TextField('Start address:')
-    value = TextField('IP:')
+    address = TextField('Start address:')
+    value = TextField('Value:')
     unitId = TextField('unitId:')
 
 @app.route("/")
